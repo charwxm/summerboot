@@ -44,7 +44,7 @@ public class SuccessHandler implements AuthenticationSuccessHandler {
         }
 
 
-        httpServletResponse.sendRedirect("/");
+//        httpServletResponse.sendRedirect("/");
 
     }
 }
