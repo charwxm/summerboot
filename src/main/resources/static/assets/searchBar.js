@@ -174,7 +174,7 @@ const loadCharacters = async () => {
 
                     <div class="checkOut">
                             <div class="checkOut btn">
-                              <a class="btn btn-md btn-secondary btn-block" href="checkout_success.html">Check Out</a>
+                              <a class="btn btn-md btn-secondary btn-block" href="/checkout_success">Check Out</a>
                             </div>
                           </div>
                     `
