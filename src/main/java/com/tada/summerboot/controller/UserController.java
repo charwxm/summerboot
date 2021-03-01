@@ -54,7 +54,7 @@ public class UserController {
         String encodedPassword = passwordEncoder.encode(newUser.getPassword());
         newUser.setPassword(encodedPassword);
         user_service_implementation.createUser(newUser);
-        return "redirect:/";
+        return "redirect:login";
     }
 
 }
