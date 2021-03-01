@@ -3,6 +3,7 @@ package com.tada.summerboot.controller;
 import com.tada.summerboot.model.User;
 import com.tada.summerboot.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,13 +16,13 @@ public class UserController {
     @Autowired
     UserServiceImpl user_service_implementation;
 
-    @PostMapping(path="/user/new")
-    public String newUser(User newUser) {
-        System.out.println(newUser);
-        user_service_implementation.createUser(newUser);
-        System.out.println("DID IT REACH HERE????");
-        return "redirect:/";
-    }
+//    @PostMapping(path="/user/new")
+//    public String newUser(User newUser) {
+//        System.out.println(newUser);
+//        user_service_implementation.createUser(newUser);
+//        System.out.println("DID IT REACH HERE????");
+//        return "redirect:/";
+//    }
 
     @GetMapping(path="/login")
     public String login(Model model) {
@@ -46,4 +47,14 @@ public class UserController {
     public List<User> all(){
         return user_service_implementation.getAllUsers();
     }
+
+    @PostMapping(path="/user/new")
+    public String newUser(User newUser) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(newUser.getPassword());
+        newUser.setPassword(encodedPassword);
+        user_service_implementation.createUser(newUser);
+        return "redirect:/";
+    }
+
 }

@@ -10,6 +10,28 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.TABLE) // GenerationType.TABLE will allow auto-increment of id
     private Integer id;
 
+    public Product(Integer id, BigDecimal price, Integer quantity, String sku, String title, String description, Integer user_id, byte[] image) {
+        this.id = id;
+        this.price = price;
+        this.quantity = quantity;
+        this.sku = sku;
+        this.title = title;
+        this.description = description;
+        this.user_id = user_id;
+        this.image = image;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    @Column(nullable= true, columnDefinition="mediumblob")
+    private byte[] image;
+
     @Column(nullable = true)
     private BigDecimal price;
 
