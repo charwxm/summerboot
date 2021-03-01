@@ -80,8 +80,9 @@ input#searchBar:focus {
 
 .jumbotron_cart {
   background-image: url("img/shoppingcartbanner.png");
+    /*object-fit: cover;*/
   background-size: cover;
-  background-repeat: no-repeat;
+  /*background-repeat: no-repeat;*/
   padding-top: 380px;
 }
 
